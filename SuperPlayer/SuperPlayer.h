@@ -4,7 +4,9 @@
 #import "TXImageSprite.h"
 #import "TXLiveBase.h"
 #else
-#import <TXLiteAVSDK_Player/TXLiteAVSDK.h>
+// Haoero改动：修改为专业版头文件
+//#import <TXLiteAVSDK_Player/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #endif
 
 #import "SuperPlayerView.h"

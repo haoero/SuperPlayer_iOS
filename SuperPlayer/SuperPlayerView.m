@@ -350,7 +350,8 @@ static UISlider * _volumeSlider;
         config.progressInterval = 0.02;
         if (_playerModel.videoId.version == FileIdV3) {
             if ([_playerModel.drmType isEqualToString:kDrmType_FairPlay]) {
-                config.certificate = self.playerModel.certificate;
+                // Haoero改动：适配专业版，去掉certificate
+//                config.certificate = self.playerModel.certificate;
                 self.vodPlayer.token = self.playerModel.token;
                 NSLog(@"FairPlay播放");
             } else if ([_playerModel.drmType isEqualToString:kDrmType_SimpleAES]) {
@@ -362,6 +363,7 @@ static UISlider * _volumeSlider;
             }
         } else if (_playerModel.token) {
             if (self.playerModel.certificate) {
+                // Haoero改动：适配专业版，去掉certificate
                 config.certificate = self.playerModel.certificate;
             }
             self.vodPlayer.token = self.playerModel.token;
@@ -1323,7 +1325,9 @@ static UISlider * _volumeSlider;
         } else if (EvtID == PLAY_EVT_PLAY_END) {
             [self.controlView setProgressTime:[self playDuration] totalTime:[self playDuration] progressValue:1.f playableValue:1.f];
             [self moviePlayDidEnd];
-        } else if (EvtID == PLAY_ERR_NET_DISCONNECT || EvtID == PLAY_ERR_FILE_NOT_FOUND || EvtID == PLAY_ERR_HLS_KEY || EvtID == PLAY_ERR_VOD_LOAD_LICENSE_FAIL) {
+//        } else if (EvtID == PLAY_ERR_NET_DISCONNECT || EvtID == PLAY_ERR_FILE_NOT_FOUND || EvtID == PLAY_ERR_HLS_KEY || EvtID == PLAY_ERR_VOD_LOAD_LICENSE_FAIL) {
+        } else if (EvtID == PLAY_ERR_NET_DISCONNECT || EvtID == PLAY_ERR_FILE_NOT_FOUND || EvtID == PLAY_ERR_HLS_KEY) {
+            // Haoero改动：去掉枚举值PLAY_ERR_VOD_LOAD_LICENSE_FAIL
             // DRM视频播放失败自动降级
             if ([self.playerModel.drmType isEqualToString:kDrmType_FairPlay]) {
                 if ([self.playerModel canSetDrmType:kDrmType_SimpleAES]) {
