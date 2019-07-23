@@ -364,7 +364,7 @@ static UISlider * _volumeSlider;
         } else if (_playerModel.token) {
             if (self.playerModel.certificate) {
                 // Haoero改动：适配专业版，去掉certificate
-                config.certificate = self.playerModel.certificate;
+                //config.certificate = self.playerModel.certificate;
             }
             self.vodPlayer.token = self.playerModel.token;
         } else {
