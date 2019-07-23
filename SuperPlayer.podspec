@@ -38,6 +38,7 @@ Pod::Spec.new do |spec|
     end
     spec.subspec "Professional" do |s|
          s.dependency 'SuperPlayer/Core'
+         s.dependency 'IMCloud'
          #s.dependency 'TXLiteAVSDK_Professional', '~> 5.2.5539'
          #s.vendored_framework = "Frameworks/TXLiteAVSDK_Professional.framework"
      end
